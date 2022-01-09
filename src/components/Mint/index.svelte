@@ -10,14 +10,10 @@
     <div class="random-img-wrap">
       <img class="random-img" src="/assets/random.png" alt="random" />
     </div>
+    <div class="text">Mint Price: 50 klay</div>
     <div class="text">Mint Situation: 0 / 1004</div>
     <div class="text">
-      Address:
-      {#if $isConnect}
-        {$myAddressShort}
-      {:else}
-        0x0000...0000
-      {/if}
+      Address: {$myAddressShort}
     </div>
     {#if $isConnect && !true}
       <MintButton />
