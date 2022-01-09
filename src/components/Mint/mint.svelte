@@ -22,7 +22,7 @@
       color: red;
     }
     .letter-b {
-      color: green;
+      color: khaki;
     }
     .letter-c {
       color: blue;
@@ -34,13 +34,13 @@
       color: salmon;
     }
     .letter-f {
-      color: darkcyan;
+      color: darkorange;
     }
     .letter-g {
-      color: goldenrod;
+      color: darkmagenta;
     }
     .letter-h {
-      color: thistle;
+      color: sienna;
       font-family: 'DK Cool Crayon Font';
     }
   }

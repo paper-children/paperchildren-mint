@@ -15,9 +15,9 @@
     <div class="text">
       Address: {$myAddressShort}
     </div>
-    {#if $isConnect && !true}
+    {#if $isConnect && !false}
       <MintButton />
-    {:else if $isConnect && true}
+    {:else if $isConnect && false}
       <div class="thanks">Thanks your participate</div>
     {:else}
       <Connect />
