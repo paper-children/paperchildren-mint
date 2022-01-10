@@ -3,8 +3,8 @@ import PaperChildrenV1ABI from '@/abi/PaperChildrenV1.json'
 import SaleV1ABI from '@/abi/SaleV1.json'
 
 export const klaytnRPC = 'https://public-node-api.klaytnapi.com/v1/cypress'
-export const paperchildrenV1CA = '0x7Eb3A6F26a02b872D362B2b11134284aF30081c8'
-export const saleV1CA = '0x82B42F330c11DaAc5EE9b22e729D519e277bb7f3'
+export const paperchildrenV1CA = '0xab150409b6177bFC42d926dE9d74E9B848aFA257'
+export const saleV1CA = '0x822822ca2734F71A11a5238A4952D3C5C6261524'
 
 export const provider = new ethers.providers.JsonRpcProvider(klaytnRPC)
 
