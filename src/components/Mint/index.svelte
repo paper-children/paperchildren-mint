@@ -39,7 +39,7 @@
       <Connect />
     {/if}
     <div class="link">
-      <a href="https://paperchildren.net/" target="_blank">Opensea Collection</a>
+      <a href="https://opensea.io/collection/paper-children" target="_blank">Opensea Collection</a>
     </div>
   </div>
 </div>
