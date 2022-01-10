@@ -1,11 +1,25 @@
 <script>
-  import { isConnect, myAddress, myAddressShort, klaytn, caver } from '@/stores'
-  // import paperABI from '@/abi/paper'
+  import axios from 'axios'
+  import {
+    isConnect,
+    myAddress,
+    myAddressShort,
+    klaytn,
+    caver,
+    paperV1TotalSupplyNum,
+    isHolder,
+    imgLink,
+    spiner,
+  } from '@/stores'
+  import { paperV1TotalSupply, buyerList } from '@/contract'
+  import { onMount } from 'svelte'
+  import { myNFT } from '@/contract'
 
-  // const myContract = new window.caver.klay.Contract(
-  //   paperABI,
-  //   '0x40944C9Da1707B3892Ad16FC7944d3C463a947F0'
-  // )
+  onMount(() => {
+    paperV1TotalSupply().then((data) => {
+      $paperV1TotalSupplyNum = data
+    })
+  })
 
   if (window.klaytn) {
     window.klaytn.on('accountsChanged', function () {
@@ -13,8 +27,18 @@
     })
   }
 
+  function getImg() {
+    myNFT($myAddress).then((data) => {
+      $spiner = true
+      let num = parseInt(data)
+      axios.get(`https://api.https://paperchildren.net/v1/${num}`).then((data) => {
+        $imgLink = data.data.image
+        $spiner = false
+      })
+    })
+  }
+
   function connect() {
-    console.log()
     if (window.klaytn === undefined) {
       alert("There's no Kaikas. Please install Kaikas wallet.")
       return
@@ -25,17 +49,18 @@
       $isConnect = true
       $myAddress = $klaytn.selectedAddress
       $myAddressShort = `${$myAddress.slice(0, 6)}...${$myAddress.slice(-4)}`
+      buyerList($myAddress)
+        .then((data) => {
+          $isHolder = data
+        })
+        .then(() => {
+          if ($isHolder === true) {
+            getImg()
+          } else {
+            $imgLink = '/assets/random.png'
+          }
+        })
     })
-    // const test = await contract.mint('0x40944C9Da1707B3892Ad16FC7944d3C463a947F0', '4')
-    // console.log(test)
-    // myContract.methods
-    //   .mint(window.klaytn.selectedAddress, '4')
-    //   .estimateGas({ from: window.klaytn.selectedAddress })
-    //   .then((data) => {
-    //     myContract.methods
-    //       .mint(window.klaytn.selectedAddress, '4')
-    //       .send({ from: window.klaytn.selectedAddress, gas: data })
-    //   })
   }
 </script>
 

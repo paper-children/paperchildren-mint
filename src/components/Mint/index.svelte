@@ -1,23 +1,36 @@
-<script lang="ts">
-  import { isConnect, myAddressShort } from '@/stores'
+<script>
+  import {
+    isConnect,
+    isHolder,
+    myAddressShort,
+    paperV1TotalSupplyNum,
+    imgLink,
+    spiner,
+  } from '@/stores'
   import Connect from '@/components/Connect/index.svelte'
   import MintButton from './mint.svelte'
+  import { Circle3 } from 'svelte-loading-spinners'
 </script>
 
 <div class="wrap">
   <div class="form">
     <div class="form-title">Mint Paper Children</div>
     <div class="random-img-wrap">
-      <img class="random-img" src="/assets/random.png" alt="random" />
+      <img class="random-img" src={$imgLink} alt="random" />
+      {#if $spiner}
+        <div class="spiner">
+          <Circle3 size="60" unit="px" duration="1s" />
+        </div>
+      {/if}
     </div>
     <div class="text">Mint Price: 50 klay</div>
-    <div class="text">Mint Situation: 0 / 1004</div>
+    <div class="text">Mint Situation: {$paperV1TotalSupplyNum} / 1004</div>
     <div class="text">
       Address: {$myAddressShort}
     </div>
-    {#if $isConnect && !false}
+    {#if $isConnect && !$isHolder}
       <MintButton />
-    {:else if $isConnect && false}
+    {:else if $isConnect && $isHolder}
       <div class="thanks">Thanks your participate</div>
     {:else}
       <Connect />
@@ -87,6 +100,19 @@
       font-family: 'Colored Crayons';
       color: black;
     }
+  }
+
+  .spiner {
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: rgba(0, 0, 0, 0.6); */
+    width: 100%;
+    height: 100vh;
   }
 
   @media screen and (max-width: 768px) {
