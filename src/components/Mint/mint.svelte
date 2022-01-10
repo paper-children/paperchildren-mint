@@ -17,7 +17,7 @@
     myNFT($myAddress).then((data) => {
       $spiner = true
       let num = parseInt(data)
-      axios.get(`https://api.https://paperchildren.net/v1/${num}`).then((data) => {
+      axios.get(`https://api.paperchildren.net/v1/${num}`).then((data) => {
         $imgLink = data.data.image
         $spiner = false
       })
