@@ -29,9 +29,9 @@
     <div class="text">
       Address: {$myAddressShort}
     </div>
-    {#if $isConnect && !$isHolder}
+    {#if $isConnect && !$isHolder && $saleInfo}
       <MintButton />
-    {:else if $isConnect && $isHolder}
+    {:else if $isConnect && $isHolder && $saleInfo}
       <div class="thanks">Thanks your participate</div>
     {:else if !$saleInfo}
       <div class="isSale">Open at 8 p.m. on January 12, 2022</div>
