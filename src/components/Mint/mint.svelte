@@ -30,7 +30,7 @@
     console.log(saleV1Contract)
     saleV1Contract.methods
       .publicSale()
-      .send({ from: $klaytn.selectedAddress, gas: 800000, value: '50000000000000000' })
+      .send({ from: $klaytn.selectedAddress, gas: 900000, value: '50000000000000000000' })
       .then(() => {
         buyerList($myAddress).then((data) => {
           $isHolder = data
@@ -44,7 +44,7 @@
   }
 </script>
 
-<div class="mint-btn">
+<div class="mint-btn" on:click={mint}>
   <span class="letter-a">M</span>
   <span class="letter-b">I</span>
   <span class="letter-c">N</span>

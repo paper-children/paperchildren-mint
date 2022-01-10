@@ -6,6 +6,7 @@
     paperV1TotalSupplyNum,
     imgLink,
     spiner,
+    saleInfo,
   } from '@/stores'
   import Connect from '@/components/Connect/index.svelte'
   import MintButton from './mint.svelte'
@@ -32,6 +33,8 @@
       <MintButton />
     {:else if $isConnect && $isHolder}
       <div class="thanks">Thanks your participate</div>
+    {:else if !$saleInfo}
+      <div class="isSale">Open at 8 p.m. on January 12, 2022</div>
     {:else}
       <Connect />
     {/if}
@@ -85,6 +88,13 @@
     font-size: 1.5rem;
     font-family: 'DK Cool Crayon Font';
     margin-bottom: 20px;
+  }
+
+  .isSale {
+    font-size: 1.5rem;
+    font-family: 'DK Cool Crayon Font';
+    margin-bottom: 20px;
+    color: blue;
   }
 
   .thanks {
@@ -157,6 +167,13 @@
       font-family: 'Colored Crayons';
       margin-bottom: 30px;
       color: darkorchid;
+    }
+
+    .isSale {
+      font-size: 0.9rem;
+      font-family: 'DK Cool Crayon Font';
+      margin-bottom: 20px;
+      color: blue;
     }
   }
 </style>

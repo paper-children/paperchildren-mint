@@ -1,5 +1,14 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import Main from '@/pages/Main.svelte'
+  import { isSale } from '@/contract'
+import { saleInfo } from './stores';
+
+  onMount(() => {
+    isSale().then((data) => {
+      $saleInfo = data
+    })
+  })
 </script>
 
 <div class="wrap">

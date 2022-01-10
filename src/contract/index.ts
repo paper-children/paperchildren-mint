@@ -25,3 +25,7 @@ export async function myNFT(_address: string) {
   let num = await paperV1Contract.tokenOfOwnerByIndex(_address, '0')
   return num
 }
+
+export async function isSale() {
+  return await saleV1Contract.isSale()
+}
