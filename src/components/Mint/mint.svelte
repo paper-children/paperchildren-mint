@@ -42,9 +42,13 @@
         })
       })
   }
+
+  function imsi() {
+    alert('민팅 준비중입니다.')
+  }
 </script>
 
-<div class="mint-btn" on:click={mint}>
+<div class="mint-btn" on:click={imsi}>
   <span class="letter-a">M</span>
   <span class="letter-b">I</span>
   <span class="letter-c">N</span>
